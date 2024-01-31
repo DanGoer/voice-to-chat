@@ -1,5 +1,14 @@
+import AudioRecorder from "../components/AudioRecorder";
+
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <h1>React Media Recorder</h1>
+      <div>
+        <AudioRecorder />
+      </div>
+    </div>
+  );
 }
 
 export default Home;
