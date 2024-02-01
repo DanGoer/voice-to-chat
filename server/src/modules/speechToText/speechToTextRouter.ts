@@ -5,16 +5,18 @@ import * as dotenv from "dotenv";
 import OpenAI from "openai";
 import { getAPIKey } from "../../common/utils/envConfig";
 
+const openai = new OpenAI({
+  apiKey: getAPIKey(),
+});
+
 export const speechToText: Router = (() => {
   const router = express.Router();
 
-  const openai = new OpenAI({
-    apiKey: getAPIKey(),
-  });
+  console.log("speechToText router erreicht");
 
   router.post("/", async (_req: Request, res: Response) => {
     console.log("speechToText erreicht");
-    console.log("Req" + JSON.stringify(_req));
+    console.log("body?" + _req.body);
     /*
     const body = await _req.json();
     const base64Audio = _req.audio;

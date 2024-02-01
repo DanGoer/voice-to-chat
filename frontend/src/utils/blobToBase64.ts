@@ -7,6 +7,7 @@ const blobToBase64 = (blob: Blob) => {
     base64data = reader?.result?.split(",")[1];
   };
   reader.readAsDataURL(blob);
+  console.log("basedata" + base64data);
   return base64data;
 };
 

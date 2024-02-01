@@ -63,8 +63,10 @@ const AudioRecorder = () => {
   const getText = async () => {
     try {
       const audioBlob = new Blob(audioChunks, { type: mimeType });
+      console.log("audiodata" + audioBlob);
       const audioData = blobToBase64(audioBlob);
-      const response = await fetch("http://localhost:8080/api/speechToText", {
+
+      const response = await fetch("http://localhost:8080/api/speechToText/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

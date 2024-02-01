@@ -8,20 +8,25 @@ import helmet from "helmet";
 
 import errorHandler from "./common/middleware/errorHandler";
 import rateLimiter from "./common/middleware/rateLimiter";
-import { getCorsOrigin } from "./common/utils/envConfig";
+import { getCorsOrigin, getPort } from "./common/utils/envConfig";
 import { speechToText } from "./modules/speechToText/speechToTextRouter";
 
 const app: Express = express();
 const corsOrigin = getCorsOrigin();
+const port = getPort();
 
 // Middlewares
-app.use(cors({ origin: [corsOrigin], credentials: true }));
+app.use(cors());
+console.log("after cors");
 app.use(helmet());
 app.use(rateLimiter);
 
 // Routes
-app.use("/speechToText", speechToText);
+app.use("/api/speechToText", speechToText);
 
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
 // Error handlers
 app.use(errorHandler());
 
