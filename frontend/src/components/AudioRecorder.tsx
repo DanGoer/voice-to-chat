@@ -70,7 +70,16 @@ const AudioRecorder = () => {
               Get Microphone
             </button>
           ) : null}
-          {permission ? <button type="button">Record</button> : null}
+          {permission && recordingStatus === "inactive" ? (
+            <button onClick={startRecording} type="button">
+              Start Recording
+            </button>
+          ) : null}
+          {recordingStatus === "recording" ? (
+            <button onClick={stopRecording} type="button">
+              Stop Recording
+            </button>
+          ) : null}
         </div>
       </main>
     </div>
