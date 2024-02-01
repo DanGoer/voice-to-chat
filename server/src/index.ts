@@ -1,17 +1,15 @@
-import cors from "cors";
 import dotenv from "dotenv";
+dotenv.config();
+
+import cors from "cors";
+
 import express, { Express } from "express";
 import helmet from "helmet";
-import path from "path";
 
 import errorHandler from "./common/middleware/errorHandler";
 import rateLimiter from "./common/middleware/rateLimiter";
 import { getCorsOrigin } from "./common/utils/envConfig";
 import { speechToText } from "./modules/speechToText/speechToTextRouter";
-
-dotenv.config({
-  path: path.resolve(__dirname, "../.env"),
-});
 
 const app: Express = express();
 const corsOrigin = getCorsOrigin();

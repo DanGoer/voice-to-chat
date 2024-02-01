@@ -8,6 +8,7 @@ export function getEnvVar<T extends string | number>(
   type: "string" | "number"
 ): T {
   const value = process.env[key];
+  console.log("value" + value + key);
   if (value == null) {
     throw new Error(
       `Unknown process.env.${key}: ${value}. Is your .env file setup?`

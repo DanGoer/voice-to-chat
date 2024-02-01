@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { blobToBase64 } from "../utils/blobToBase64";
 
 const mimeType: string = "audio/webm";
 
@@ -56,8 +57,26 @@ const AudioRecorder = () => {
       //creates a playable URL from the blob file.
       const audioUrl = URL.createObjectURL(audioBlob);
       setAudio(audioUrl);
-      setAudioChunks([]);
     };
+  };
+
+  const getText = async () => {
+    try {
+      const audioBlob = new Blob(audioChunks, { type: mimeType });
+      const audioData = blobToBase64(audioBlob);
+      const response = await fetch("http://localhost:8080/api/speechToText", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          audio: audioData,
+        }),
+      }).then((res) => res.json());
+      console.log("response", response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -81,6 +100,15 @@ const AudioRecorder = () => {
             </button>
           ) : null}
         </div>
+        <button onClick={getText}>Send to BE</button>
+        {audio ? (
+          <div className="audio-container">
+            <audio src={audio} controls></audio>
+            <a download href={audio}>
+              Download Recording
+            </a>
+          </div>
+        ) : null}
       </main>
     </div>
   );

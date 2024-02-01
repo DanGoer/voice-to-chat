@@ -13,8 +13,11 @@ export const speechToText: Router = (() => {
   });
 
   router.post("/", async (_req: Request, res: Response) => {
+    console.log("speechToText erreicht");
+    console.log("Req" + JSON.stringify(_req));
+    /*
     const body = await _req.json();
-    const base64Audio = body.audio;
+    const base64Audio = _req.audio;
     const audio = Buffer.from(base64Audio, "base64");
     const filePath = "tmp/input.wav";
 
@@ -31,7 +34,7 @@ export const speechToText: Router = (() => {
     } catch (error) {
       console.error("Error processing audio:", error);
       return error;
-    }
+    }*/
   });
 
   return router;
