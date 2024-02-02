@@ -10,6 +10,7 @@ const AudioRecorder = () => {
   const [recordingStatus, setRecordingStatus] = useState<string>("inactive");
   const [audioChunks, setAudioChunks] = useState<any[]>([]);
   const [audio, setAudio] = useState<null | string>(null);
+  const [text, setText] = useState<string>("");
 
   const getMicrophonePermission = async () => {
     if ("MediaRecorder" in window) {
@@ -62,10 +63,10 @@ const AudioRecorder = () => {
 
   const getText = async () => {
     try {
-      const audioBlob = new Blob(audioChunks, { type: mimeType });
-      console.log("audiodata" + audioBlob);
-      const audioData = blobToBase64(audioBlob);
+      const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
 
+      const audioData = await blobToBase64(audioBlob);
+      console.log("audiodata" + audioData);
       const response = await fetch("http://localhost:8080/api/speechToText/", {
         method: "POST",
         headers: {
@@ -74,8 +75,9 @@ const AudioRecorder = () => {
         body: JSON.stringify({
           audio: audioData,
         }),
-      }).then((res) => res.json());
+      }).then((res) => res.text());
       console.log("response", response);
+      setText(response);
     } catch (error) {
       console.log(error);
     }
@@ -109,6 +111,11 @@ const AudioRecorder = () => {
             <a download href={audio}>
               Download Recording
             </a>
+          </div>
+        ) : null}
+        {text ? (
+          <div>
+            <p>Text:{text}</p>
           </div>
         ) : null}
       </main>

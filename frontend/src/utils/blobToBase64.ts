@@ -1,14 +1,14 @@
 //callback - where we want to get result
-const blobToBase64 = (blob: Blob) => {
-  const reader: FileReader = new FileReader();
-  let base64data = null;
-  reader.onload = function () {
-    // @ts-expect-error aaa
-    base64data = reader?.result?.split(",")[1];
-  };
-  reader.readAsDataURL(blob);
-  console.log("basedata" + base64data);
-  return base64data;
+const blobToBase64 = async (blob: Blob) => {
+  return new Promise((resolve, _) => {
+    const reader: FileReader = new FileReader();
+
+    reader.onloadend = () => {
+      // @ts-expect-error aaa
+      resolve(reader?.result?.split(",")[1]);
+    };
+    reader.readAsDataURL(blob);
+  });
 };
 
 export { blobToBase64 };
