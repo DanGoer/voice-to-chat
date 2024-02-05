@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
-import { blobToBase64 } from "../utils/blobToBase64";
-
-const mimeType: string = "audio/webm";
+import { getSpeechToText } from "../utils/getSpeechToText";
 
 const AudioRecorder = () => {
   const [permission, setPermission] = useState<boolean>(false);
@@ -61,29 +59,6 @@ const AudioRecorder = () => {
     };
   };
 
-  const getText = async () => {
-    try {
-      const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-
-      const audioData = await blobToBase64(audioBlob);
-
-      console.log("audiodata" + audioData);
-      const response = await fetch("http://localhost:8080/api/speechToText/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          audio: audioData,
-        }),
-      }).then((res) => res.text());
-      console.log("response", response);
-      setText(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div>
       <h2>Audio Recorder</h2>
@@ -105,7 +80,9 @@ const AudioRecorder = () => {
             </button>
           ) : null}
         </div>
-        <button onClick={getText}>Send to BE</button>
+        <button onClick={() => getSpeechToText(audioChunks, setText)}>
+          Send to BE
+        </button>
         {audio ? (
           <div className="audio-container">
             <audio src={audio} controls></audio>

@@ -14,6 +14,8 @@ import { textToChat } from "./modules/textToChat/textToChatRouter";
 import { textToSummary } from "./modules/textToSummary/textToSummaryRouter";
 import { textToSpeech } from "./modules/textToSpeech/textToSpeechRouter";
 
+//TODO: AUTH, DB
+
 const app: Express = express();
 const bodyParser = require("body-parser");
 const corsOrigin = getCorsOrigin();
