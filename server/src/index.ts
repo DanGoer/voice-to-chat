@@ -12,6 +12,7 @@ import { getCorsOrigin, getPort } from "./common/utils/envConfig";
 import { speechToText } from "./modules/speechToText/speechToTextRouter";
 import { textToChat } from "./modules/textToChat/textToChatRouter";
 import { textToSummary } from "./modules/textToSummary/textToSummaryRouter";
+import { textToSpeech } from "./modules/textToSpeech/textToSpeechRouter";
 
 const app: Express = express();
 const bodyParser = require("body-parser");
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 app.use("/api/speechToText", speechToText);
 app.use("/api/textToChat", textToChat);
 app.use("/api/textToSummary", textToSummary);
+app.use("/api/textToSpeech", textToSpeech);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
