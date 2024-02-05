@@ -54,7 +54,7 @@ const AudioRecorder = () => {
     mediaRecorder.current.stop();
     mediaRecorder.current.onstop = () => {
       //creates a blob file from the audiochunks data
-      const audioBlob = new Blob(audioChunks, { type: mimeType });
+      const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
       //creates a playable URL from the blob file.
       const audioUrl = URL.createObjectURL(audioBlob);
       setAudio(audioUrl);
@@ -66,6 +66,7 @@ const AudioRecorder = () => {
       const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
 
       const audioData = await blobToBase64(audioBlob);
+
       console.log("audiodata" + audioData);
       const response = await fetch("http://localhost:8080/api/speechToText/", {
         method: "POST",

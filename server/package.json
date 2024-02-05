@@ -6,7 +6,7 @@
   "scripts": {
     "ts:check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production npm run build && tsx build/src/index.js"
+    "start": "nodemon ./modules/index.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

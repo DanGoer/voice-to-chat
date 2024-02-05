@@ -24,7 +24,7 @@ export const speechToText: Router = (() => {
 
     try {
       fs.writeFileSync(filePath, audio);
-      const readStream = fs.createReadStream("tmp/input2.wav");
+      const readStream = fs.createReadStream(filePath);
       const data = await openai.audio.transcriptions.create({
         model: "whisper-1",
         file: readStream,
