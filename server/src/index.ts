@@ -10,6 +10,8 @@ import errorHandler from "./common/middleware/errorHandler";
 import rateLimiter from "./common/middleware/rateLimiter";
 import { getCorsOrigin, getPort } from "./common/utils/envConfig";
 import { speechToText } from "./modules/speechToText/speechToTextRouter";
+import { textToChat } from "./modules/textToChat/textToChatRouter";
+import { textToSummary } from "./modules/textToSummary/textToSummaryRouter";
 
 const app: Express = express();
 const bodyParser = require("body-parser");
@@ -26,6 +28,8 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api/speechToText", speechToText);
+app.use("/api/textToChat", textToChat);
+app.use("/api/textToSummary", textToSummary);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
