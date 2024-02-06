@@ -2,12 +2,7 @@ import express, { Request, Response, Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import fs from "fs";
 import * as dotenv from "dotenv";
-import OpenAI from "openai";
-import { getAPIKey } from "../../common/utils/envConfig";
-
-const openai = new OpenAI({
-  apiKey: getAPIKey(),
-});
+import { openai } from "../../common/utils/openAi";
 
 export const speechToText: Router = (() => {
   const router = express.Router();

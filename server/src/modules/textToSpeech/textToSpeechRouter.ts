@@ -2,13 +2,8 @@ import express, { Request, Response, Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import fs from "fs";
 import * as dotenv from "dotenv";
-import OpenAI from "openai";
-import { getAPIKey } from "../../common/utils/envConfig";
 import path from "path";
-
-const openai = new OpenAI({
-  apiKey: getAPIKey(),
-});
+import { openai } from "../../common/utils/openAi";
 
 const speechFile = path.resolve("./speech.mp3");
 
