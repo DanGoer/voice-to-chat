@@ -53,15 +53,15 @@ const Register = () => {
           <form onSubmit={handleSubmit}>
             <div id="email">
               <label>Email</label>
-              <div type="email" ref={emailRef} required />
+              <input type="email" ref={emailRef} required />
             </div>
             <div id="password">
               <label>Password</label>
-              <div type="password" ref={passwordRef} required />
+              <input type="password" ref={passwordRef} required />
             </div>
             <div id="confirm-password">
               <label>Confirm Password</label>
-              <div type="password" ref={confirmPasswordRef} required />
+              <input type="password" ref={confirmPasswordRef} required />
             </div>
             {errorMsg && (
               <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
