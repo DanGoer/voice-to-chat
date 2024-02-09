@@ -2,11 +2,18 @@ import { useRef, useState } from "react";
 
 const mimeType: string = "audio/webm";
 
+enum RecordingStatus {
+  inactive = "inactive",
+  recording = "recording",
+}
+
 function useAudioRecorder() {
   const [permission, setPermission] = useState<boolean>(false);
   const [stream, setStream] = useState<null | MediaStream>(null);
   const mediaRecorder = useRef(null);
-  const [recordingStatus, setRecordingStatus] = useState<string>("inactive");
+  const [recordingStatus, setRecordingStatus] = useState<RecordingStatus>(
+    RecordingStatus.inactive
+  );
   const [audioChunks, setAudioChunks] = useState<any[]>([]);
   const [audio, setAudio] = useState<null | string>(null);
   const [text, setText] = useState<string>("");
@@ -29,7 +36,7 @@ function useAudioRecorder() {
   };
 
   const startRecording = async () => {
-    setRecordingStatus("recording");
+    setRecordingStatus(RecordingStatus.recording);
     //create new Media recorder instance using the stream
 
     // @ts-expect-error aaa
@@ -48,7 +55,7 @@ function useAudioRecorder() {
   };
 
   const stopRecording = () => {
-    setRecordingStatus("inactive");
+    setRecordingStatus(RecordingStatus.inactive);
     //stops the recording instance
     mediaRecorder.current.stop();
     mediaRecorder.current.onstop = () => {
@@ -59,6 +66,7 @@ function useAudioRecorder() {
       setAudio(audioUrl);
     };
   };
+
   return {
     getMicrophonePermission,
     startRecording,

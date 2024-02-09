@@ -34,32 +34,32 @@ const Login = () => {
   return (
     <section>
       <div>
-        <h2 className="text-center mb-4">Login</h2>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <div id="email">
-            <label>Email</label>
-            <input type="email" ref={emailRef} required />
-          </div>
-          <div id="password">
-            <label>Password</label>
-            <input type="password" ref={passwordRef} required />
-          </div>
+          <label>
+            Email:
+            <input id="email" type="email" ref={emailRef} required />
+          </label>
+          <label>
+            Password:
+            <input id="password" type="password" ref={passwordRef} required />
+          </label>
           {errorMsg && (
             <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
               {errorMsg}
             </div>
           )}
-          <div className="text-center mt-2">
-            <button disabled={loading} type="submit" className="w-50">
+          <div>
+            <button disabled={loading} type="submit">
               Login
             </button>
           </div>
         </form>
       </div>
-      <div className="w-100 text-center mt-2">
+      <div>
         Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
       </div>
-      <div className="w-100 text-center mt-2">
+      <div>
         New User? <Link to={"/register"}>Register</Link>
       </div>
     </section>

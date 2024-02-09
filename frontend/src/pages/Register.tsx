@@ -49,20 +49,24 @@ const Register = () => {
     <>
       <section>
         <div>
-          <h2 className="text-center mb-4">Register</h2>
+          <h2>Register</h2>
           <form onSubmit={handleSubmit}>
-            <div id="email">
-              <label>Email</label>
-              <input type="email" ref={emailRef} required />
-            </div>
-            <div id="password">
-              <label>Password</label>
-              <input type="password" ref={passwordRef} required />
-            </div>
-            <div id="confirm-password">
-              <label>Confirm Password</label>
-              <input type="password" ref={confirmPasswordRef} required />
-            </div>
+            <label>
+              Email: <input id="email" type="email" ref={emailRef} required />
+            </label>
+            <label>
+              Password:
+              <input id="password" type="password" ref={passwordRef} required />
+            </label>
+            <label>
+              Confirm Password:
+              <input
+                id="confirm-password"
+                type="password"
+                ref={confirmPasswordRef}
+                required
+              />
+            </label>
             {errorMsg && (
               <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
                 {errorMsg}
@@ -73,15 +77,15 @@ const Register = () => {
                 {msg}
               </div>
             )}
-            <div className="text-center mt-2">
-              <button disabled={loading} type="submit" className="w-50">
+            <div>
+              <button disabled={loading} type="submit">
                 Register
               </button>
             </div>
           </form>
         </div>
       </section>
-      <div className="w-100 text-center mt-2">
+      <div>
         Already a User? <Link to={"/login"}>Login</Link>
       </div>
     </>

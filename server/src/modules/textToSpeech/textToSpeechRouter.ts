@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import path from "path";
 import { openai } from "../../common/utils/openAi";
 
-const speechFile = path.resolve("./speech.mp3");
+const speechFile = path.resolve("./tmp/speech.mp3");
 
 export const textToSpeech: Router = (() => {
   const router = express.Router();
@@ -23,11 +23,17 @@ export const textToSpeech: Router = (() => {
         voice: "onyx",
         input: text,
       });
-      console.log(speechFile);
+      console.log("speechfile" + speechFile);
       const buffer = Buffer.from(await mp3.arrayBuffer());
       await fs.promises.writeFile(speechFile, buffer);
 
-      res.send(mp3);
+      res.sendFile(speechFile, function (err) {
+        if (err) {
+          console.error("Error sending file:", err);
+        } else {
+          console.log("Sent:", "speech.mp3");
+        }
+      });
     } catch (error) {
       console.error("Error processing audio:", error);
       return error;

@@ -25,25 +25,25 @@ const PasswordReset = () => {
   return (
     <section>
       <div>
-        <h2 className="text-center mb-4">Login</h2>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <div id="email">
-            <label>Email</label>
-            <input type="email" ref={emailRef} required />
-          </div>
+          <label>
+            Email:
+            <input id="email" type="email" ref={emailRef} required />
+          </label>
           {msg && (
             <div variant="success" onClose={() => setMsg("")} dismissible>
               {msg}
             </div>
           )}
-          <div className="text-center mt-2">
-            <button disabled={loading} type="submit" className="w-50">
+          <div>
+            <button disabled={loading} type="submit">
               Send Reset Link
             </button>
           </div>
         </form>
       </div>
-      <div className="w-100 text-center mt-2">
+      <div>
         Back to Login? <Link to={"/login"}>Login</Link>
       </div>
     </section>
