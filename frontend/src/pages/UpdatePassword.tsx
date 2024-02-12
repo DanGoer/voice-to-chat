@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import Alert from "../components/Alert";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
@@ -51,11 +52,7 @@ const UpdatePassword = () => {
               required
             />
           </label>
-          {errorMsg && (
-            <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
-              {errorMsg}
-            </div>
-          )}
+          {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
           <div>
             <button disabled={loading} type="submit">
               Update

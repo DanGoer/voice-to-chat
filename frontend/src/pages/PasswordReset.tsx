@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+import Alert from "../components/Alert";
 
 const PasswordReset = () => {
   const { passwordReset } = useAuth();
@@ -31,11 +32,7 @@ const PasswordReset = () => {
             Email:
             <input id="email" type="email" ref={emailRef} required />
           </label>
-          {msg && (
-            <div variant="success" onClose={() => setMsg("")} dismissible>
-              {msg}
-            </div>
-          )}
+          {msg && <Alert text="success" onClose={setMsg("")} />}
           <div>
             <button disabled={loading} type="submit">
               Send Reset Link

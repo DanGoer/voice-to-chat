@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import Alert from "../components/Alert";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -44,11 +45,7 @@ const Login = () => {
             Password:
             <input id="password" type="password" ref={passwordRef} required />
           </label>
-          {errorMsg && (
-            <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
-              {errorMsg}
-            </div>
-          )}
+          {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
           <div>
             <button disabled={loading} type="submit">
               Login

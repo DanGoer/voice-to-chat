@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabase/client";
+import Alert from "../components/Alert";
 
 const Register = () => {
   const emailRef = useRef(null);
@@ -67,16 +68,8 @@ const Register = () => {
                 required
               />
             </label>
-            {errorMsg && (
-              <div variant="danger" onClose={() => setErrorMsg("")} dismissible>
-                {errorMsg}
-              </div>
-            )}
-            {msg && (
-              <div variant="success" onClose={() => setMsg("")} dismissible>
-                {msg}
-              </div>
-            )}
+            {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
+            {msg && <Alert text="success" onClose={setMsg} />}
             <div>
               <button disabled={loading} type="submit">
                 Register

@@ -27,7 +27,7 @@ app.use(cors());
 console.log("after cors");
 app.use(helmet());
 app.use(rateLimiter);
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 
 // Routes
 app.use("/api/speechToText", speechToText);
