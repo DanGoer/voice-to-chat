@@ -2,7 +2,9 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import Alert from "../components/Alert";
-import "./login.scss";
+import "./login.css";
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -34,32 +36,40 @@ const Login = () => {
   };
 
   return (
-    <section className="theme-light">
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input id="email" type="email" ref={emailRef} required />
-          </label>
-          <label>
-            Password:
-            <input id="password" type="password" ref={passwordRef} required />
-          </label>
-          {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
+    <section>
+      <Card>
+        <Card.Body>
           <div>
-            <button disabled={loading} type="submit">
-              Login
-            </button>
+            <Card.Title>Login</Card.Title>
+            <form onSubmit={handleSubmit}>
+              <label>
+                Email:
+                <input id="email" type="email" ref={emailRef} required />
+              </label>
+              <label>
+                Password:
+                <input
+                  id="password"
+                  type="password"
+                  ref={passwordRef}
+                  required
+                />
+              </label>
+              {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
+              <Button variant="primary" disabled={loading} type="submit">
+                Login
+              </Button>
+            </form>
           </div>
-        </form>
-      </div>
-      <div>
-        Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
-      </div>
-      <div>
-        New User? <Link to={"/register"}>Register</Link>
-      </div>
+          <div>
+            Forgot Password?{" "}
+            <Card.Link href={"/passwordreset"}>Click Here</Card.Link>
+          </div>
+          <div>
+            New User? <Card.Link href={"/register"}>Register</Card.Link>
+          </div>
+        </Card.Body>
+      </Card>
     </section>
   );
 };
