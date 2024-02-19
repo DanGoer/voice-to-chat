@@ -14,7 +14,7 @@ import { textToChat } from "./modules/textToChat/textToChatRouter";
 import { textToSummary } from "./modules/textToSummary/textToSummaryRouter";
 import { textToSpeech } from "./modules/textToSpeech/textToSpeechRouter";
 
-//TODO: AUTH, DB
+//TODO: DB
 
 const app: Express = express();
 const bodyParser = require("body-parser");
@@ -27,7 +27,7 @@ app.use(cors());
 console.log("after cors");
 app.use(helmet());
 app.use(rateLimiter);
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json({ limit: "25mb" }));
 
 // Routes
 app.use("/api/speechToText", speechToText);

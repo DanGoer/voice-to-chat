@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import Alert from "../components/Alert";
+import "./login.scss";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -33,7 +34,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className="theme-light">
       <div>
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>

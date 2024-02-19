@@ -1,0 +1,13 @@
+@include themify($themes) {
+  p {
+    color: themed("text");
+    background-color: themed("bg");
+  }
+  button {
+    background-color: themed("brand");
+    color: themed("text");
+  }
+  a {
+    color: themed("brand");
+  }
+}
