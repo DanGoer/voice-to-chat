@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import Alert from "../components/Alert";
 import "./login.css";
+
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 
 const Login = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("test");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -41,25 +43,40 @@ const Login = () => {
         <Card.Body>
           <div>
             <Card.Title>Login</Card.Title>
-            <form onSubmit={handleSubmit}>
-              <label>
-                Email:
-                <input id="email" type="email" ref={emailRef} required />
-              </label>
-              <label>
-                Password:
-                <input
-                  id="password"
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="name@example.com"
+                  ref={emailRef}
+                  required
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
                   type="password"
+                  placeholder="password"
                   ref={passwordRef}
                   required
                 />
-              </label>
-              {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
-              <Button variant="primary" disabled={loading} type="submit">
-                Login
-              </Button>
-            </form>
+              </Form.Group>
+              {errorMsg && (
+                <Alert
+                  variant="danger"
+                  onClose={() => setErrorMsg("")}
+                  dismissible
+                >
+                  ErrorMessage
+                </Alert>
+              )}
+              <div>
+                <Button variant="primary" disabled={loading} type="submit">
+                  Login
+                </Button>
+              </div>
+            </Form>
           </div>
           <div>
             Forgot Password?{" "}

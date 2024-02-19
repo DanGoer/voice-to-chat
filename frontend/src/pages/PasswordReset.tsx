@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
-import Alert from "../components/Alert";
+import Alert from "react-bootstrap/Alert";
 
 const PasswordReset = () => {
   const { passwordReset } = useAuth();

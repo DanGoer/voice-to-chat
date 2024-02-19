@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabase/client";
-import Alert from "../components/Alert";
+import Alert from "react-bootstrap/Alert";
 
 const Register = () => {
   const emailRef = useRef(null);

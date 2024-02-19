@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Alert from "../components/Alert";
+import Alert from "react-bootstrap/Alert";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
