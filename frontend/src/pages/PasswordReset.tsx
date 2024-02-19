@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 const PasswordReset = () => {
@@ -25,24 +29,35 @@ const PasswordReset = () => {
 
   return (
     <section>
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input id="email" type="email" ref={emailRef} required />
-          </label>
-          {msg && <Alert text="success" onClose={setMsg("")} />}
+      <Card>
+        <Card.Body>
           <div>
-            <button disabled={loading} type="submit">
-              Send Reset Link
-            </button>
+            <Card.Title>Login</Card.Title>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Email:</Form.Label>
+                <Form.Control id="email" type="email" ref={emailRef} required />
+              </Form.Group>
+              {msg && (
+                <Alert variant="success" onClose={() => setMsg("")} dismissible>
+                  {msg}
+                </Alert>
+              )}
+              <div>
+                <Button variant="primary" disabled={loading} type="submit">
+                  Send Reset Link
+                </Button>
+              </div>
+            </Form>
           </div>
-        </form>
-      </div>
-      <div>
-        Back to Login? <Link to={"/login"}>Login</Link>
-      </div>
+          <div>
+            Back to Login?{" "}
+            <Card.Link as={Link} to={"/login"}>
+              Login
+            </Card.Link>
+          </div>
+        </Card.Body>
+      </Card>
     </section>
   );
 };

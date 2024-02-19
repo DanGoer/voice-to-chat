@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabase/client";
+
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 const Register = () => {
@@ -47,41 +51,64 @@ const Register = () => {
   };
 
   return (
-    <>
-      <section>
-        <div>
-          <h2>Register</h2>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Email: <input id="email" type="email" ref={emailRef} required />
-            </label>
-            <label>
-              Password:
-              <input id="password" type="password" ref={passwordRef} required />
-            </label>
-            <label>
-              Confirm Password:
-              <input
-                id="confirm-password"
-                type="password"
-                ref={confirmPasswordRef}
-                required
-              />
-            </label>
-            {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
-            {msg && <Alert text="success" onClose={setMsg} />}
-            <div>
-              <button disabled={loading} type="submit">
-                Register
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
-      <div>
-        Already a User? <Link to={"/login"}>Login</Link>
-      </div>
-    </>
+    <section>
+      <Card>
+        <Card.Body>
+          <div>
+            <Card.Title>Register</Card.Title>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Email: </Form.Label>
+                <Form.Control id="email" type="email" ref={emailRef} required />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  id="password"
+                  type="password"
+                  ref={passwordRef}
+                  required
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Confirm Password:</Form.Label>
+                <Form.Control
+                  id="confirm-password"
+                  type="password"
+                  ref={confirmPasswordRef}
+                  required
+                />
+              </Form.Group>
+              {errorMsg && (
+                <Alert
+                  variant="danger"
+                  onClose={() => setErrorMsg("")}
+                  dismissible
+                >
+                  {errorMsg}
+                </Alert>
+              )}
+              {msg && (
+                <Alert variant="success" onClose={() => setMsg("")} dismissible>
+                  {msg}
+                </Alert>
+              )}
+              <div>
+                <Button variant="primary" disabled={loading} type="submit">
+                  Register
+                </Button>
+              </div>
+            </Form>
+          </div>
+          <div>
+            Already a User?{" "}
+            <Card.Link as={Link} to={"/login"}>
+              Login
+            </Card.Link>
+          </div>
+        </Card.Body>
+      </Card>
+    </section>
   );
 };
 

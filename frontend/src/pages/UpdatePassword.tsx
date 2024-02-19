@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 const UpdatePassword = () => {
@@ -36,30 +40,43 @@ const UpdatePassword = () => {
 
   return (
     <section>
-      <div>
-        <h2>Update Password</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Password:
-            <input id="password" type="password" ref={passwordRef} required />
-          </label>
-          <label>
-            Confirm Password:
-            <input
-              id="confirm-password"
-              type="password"
-              ref={confirmPasswordRef}
-              required
-            />
-          </label>
-          {errorMsg && <Alert text="danger" onClose={setErrorMsg} />}
+      <Card>
+        <Card.Body>
           <div>
-            <button disabled={loading} type="submit">
-              Update
-            </button>
+            <Card.Title>Update Password</Card.Title>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  id="password"
+                  type="password"
+                  ref={passwordRef}
+                  required
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Confirm Password:</Form.Label>
+                <Form.Control
+                  id="confirm-password"
+                  type="password"
+                  ref={confirmPasswordRef}
+                  required
+                />
+              </Form.Group>
+              {errorMsg && (
+                <Alert variant="danger" onClose={setErrorMsg} dismissible>
+                  {errorMsg}
+                </Alert>
+              )}
+              <div>
+                <Button variant="primary" disabled={loading} type="submit">
+                  Update
+                </Button>
+              </div>
+            </Form>
           </div>
-        </form>
-      </div>
+        </Card.Body>
+      </Card>
     </section>
   );
 };
