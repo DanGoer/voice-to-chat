@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import PasswordReset from "./pages/PasswordReset";
 import UpdatePassword from "./pages/UpdatePassword";
 import NavBar from "./components/NavBar";
+import Chat from "./pages/Chat";
 
 //TODO: style etc?
 
@@ -17,11 +18,12 @@ function App() {
       <main>
         <Routes>
           <Route element={<AuthRoute />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat2" element={<Home />} />
           </Route>
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/passwordreset" element={<PasswordReset />} />
           <Route path="/update-password" element={<UpdatePassword />} />
         </Routes>
