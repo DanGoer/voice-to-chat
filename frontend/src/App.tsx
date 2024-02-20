@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="pt-5">
+      <main className="pt-5 min-vh-100">
         <Routes>
           <Route element={<AuthRoute />}>
             <Route path="/chat" element={<Chat />} />
