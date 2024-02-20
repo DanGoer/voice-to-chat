@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import AuthWrapper from "../components/AuthWrapper";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
@@ -39,7 +40,7 @@ const UpdatePassword = () => {
   };
 
   return (
-    <section>
+    <AuthWrapper>
       <Card>
         <Card.Body>
           <div>
@@ -77,7 +78,7 @@ const UpdatePassword = () => {
           </div>
         </Card.Body>
       </Card>
-    </section>
+    </AuthWrapper>
   );
 };
 

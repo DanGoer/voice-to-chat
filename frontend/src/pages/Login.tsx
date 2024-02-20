@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import AuthWrapper from "../components/AuthWrapper";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -37,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <section className="d-flex justify-content-center align-items-center vh-100">
+    <AuthWrapper>
       <Card>
         <Card.Body>
           <div>
@@ -91,7 +92,7 @@ const Login = () => {
           </div>
         </Card.Body>
       </Card>
-    </section>
+    </AuthWrapper>
   );
 };
 
