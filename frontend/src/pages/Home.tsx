@@ -1,17 +1,19 @@
-import AudioRecorder from "../components/AudioRecorder";
+import Footer from "../components/Footer";
+import HeroImage from "../components/HeroImage";
+import InfoBox from "../components/InfoBox";
+import Testimonials from "../components/Testimonials";
 import { useAuth } from "../context/AuthProvider";
 
 function Home() {
   const { signOut } = useAuth();
 
   return (
-    <div>
-      <h1>React Media Recorder</h1>
-      <div>
-        <AudioRecorder />
-        <button onClick={signOut}>logout</button>
-      </div>
-    </div>
+    <>
+      <HeroImage />
+      <InfoBox />
+      <Testimonials />
+      <Footer />
+    </>
   );
 }
 
