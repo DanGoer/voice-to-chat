@@ -1,34 +1,75 @@
-import { Button, Nav } from "react-bootstrap";
 import "./SideBar.modules.scss";
+import Robot from "../Icons/Robot";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import User from "../Icons/User";
 
-function SideBar({ isSidebarOpen }) {
-  console.log(isSidebarOpen);
+function SideBar({ children }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  const menuItem = [
+    {
+      path: "/",
+      name: "Dashboard",
+      icon: <Robot />,
+    },
+    {
+      path: "/about",
+      name: "About",
+      icon: <Robot />,
+    },
+    {
+      path: "/analytics",
+      name: "Analytics",
+      icon: <Robot />,
+    },
+    {
+      path: "/comment",
+      name: "Comment",
+      icon: <Robot />,
+    },
+    {
+      path: "/product",
+      name: "Product",
+      icon: <Robot />,
+    },
+    {
+      path: "/productList",
+      name: "Product List",
+      icon: <Robot />,
+    },
+  ];
   return (
-    <div className={`sidebar ${isSidebarOpen ? "is-open" : ""}`}>
-      <div className="sidebar-header">
-        <Button variant="link" style={{ color: "#fff" }} className="mt-4">
-          aaa
-        </Button>
-        <h3>react-bootstrap sidebar</h3>
+    <div className="container">
+      <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
+        <div className="top_section">
+          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+            Logo
+          </h1>
+          <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
+            <button onClick={toggle}>
+              <User />
+            </button>
+          </div>
+        </div>
+        {menuItem.map((item, index) => (
+          <NavLink
+            to={item.path}
+            key={item.name + index}
+            className="link"
+            activeclassName="active"
+          >
+            <div className="icon">{item.icon}</div>
+            <div
+              style={{ display: isOpen ? "block" : "none" }}
+              className="link_text"
+            >
+              {item.name}
+            </div>
+          </NavLink>
+        ))}
       </div>
-      <Nav className="flex-column pt-2">
-        <p className="ml-3">Heading</p>
-        <Nav.Item className="active">
-          <Nav.Link href="/">Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/">About</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/">Portfolio</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/">FAQ</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/">Contact</Nav.Link>
-        </Nav.Item>
-      </Nav>
+      <div className="main">{children}</div>
     </div>
   );
 }

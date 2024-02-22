@@ -9,8 +9,6 @@ import UpdatePassword from "./pages/UpdatePassword";
 import NavBar from "./components/NavBar";
 import Chat from "./pages/Chat";
 
-//TODO: style etc?
-
 function App() {
   return (
     <>
