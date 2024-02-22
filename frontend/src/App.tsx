@@ -12,7 +12,7 @@ import { useState } from "react";
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
-  const toggleDarkMode = () => {
+  const toggleDarkMode: () => void = () => {
     setDarkMode(!darkMode);
   };
 

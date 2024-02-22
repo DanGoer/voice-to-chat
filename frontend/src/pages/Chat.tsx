@@ -1,6 +1,4 @@
-import { Button } from "react-bootstrap";
 import AudioRecorder from "../components/AudioRecorder";
-import { useAuth } from "../context/AuthProvider";
 import { useState } from "react";
 import SettingsModal from "../components/SettingsModal";
 import SideBar from "../components/SideBar";

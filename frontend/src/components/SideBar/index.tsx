@@ -36,6 +36,7 @@ function SideBar({
       onClick: toggleSettings,
     },
   ];
+
   return (
     <div className="sidebar-container">
       <div style={{ width: sideIsOpen ? "200px" : "50px" }} className="sidebar">
