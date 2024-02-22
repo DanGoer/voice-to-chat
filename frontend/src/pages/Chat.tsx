@@ -9,12 +9,19 @@ function Chat() {
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<string>("light");
   const [settings, setSettings] = useState<string>("");
+  const [sideIsOpen, setSideIsOpen] = useState<boolean>(false);
 
   const { signOut } = useAuth();
 
   return (
-    <SideBar>
-      <section className="w-100" data-bs-theme={darkMode}>
+    <>
+      <SideBar sideIsOpen={sideIsOpen} setSideIsOpen={setSideIsOpen} />
+      <section
+        className={`${
+          sideIsOpen ? "side-is-open" : ""
+        } chat-section w-100 vh-75 `}
+        data-bs-theme={darkMode}
+      >
         <h1>React Media Recorder</h1>
         <div>
           <AudioRecorder />
@@ -30,7 +37,7 @@ function Chat() {
           onHide={() => setModalShow(false)}
         />
       </section>
-    </SideBar>
+    </>
   );
 }
 

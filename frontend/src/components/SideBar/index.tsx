@@ -1,13 +1,10 @@
 import "./SideBar.modules.scss";
 import Robot from "../Icons/Robot";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import User from "../Icons/User";
 import { Nav } from "react-bootstrap";
 
-function SideBar({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+function SideBar({ sideIsOpen, setSideIsOpen }) {
   const menuItem = [
     {
       path: "/",
@@ -42,13 +39,19 @@ function SideBar({ children }) {
   ];
   return (
     <div className="sidebar-container">
-      <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
+      <div style={{ width: sideIsOpen ? "200px" : "50px" }} className="sidebar">
         <div className="top_section">
-          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+          <h1
+            style={{ display: sideIsOpen ? "block" : "none" }}
+            className="logo"
+          >
             Logo
           </h1>
-          <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
-            <button onClick={toggle}>
+          <div
+            style={{ marginLeft: sideIsOpen ? "50px" : "0px" }}
+            className="bars"
+          >
+            <button onClick={() => setSideIsOpen(!sideIsOpen)}>
               <User />
             </button>
           </div>
@@ -63,7 +66,7 @@ function SideBar({ children }) {
           >
             <div className="icon">{item.icon}</div>
             <div
-              style={{ display: isOpen ? "block" : "none" }}
+              style={{ display: sideIsOpen ? "block" : "none" }}
               className="link_text"
             >
               {item.name}
@@ -71,7 +74,6 @@ function SideBar({ children }) {
           </Nav.Link>
         ))}
       </div>
-      {children}
     </div>
   );
 }

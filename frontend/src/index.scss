@@ -65,3 +65,12 @@
     isolation: isolate;
   }
 }
+.chat-section {
+  overflow-y: scroll;
+  padding-left: 50px;
+  transition: all 0.5s;
+}
+
+.side-is-open {
+  padding-left: 200px;
+}

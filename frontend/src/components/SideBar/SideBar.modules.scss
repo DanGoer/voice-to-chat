@@ -5,7 +5,8 @@
 }
 
 .sidebar-container {
-  display: sticky;
+  display: flex;
+  position: fixed;
 }
 
 .main {
