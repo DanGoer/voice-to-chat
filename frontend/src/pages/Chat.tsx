@@ -14,7 +14,7 @@ function Chat() {
 
   return (
     <SideBar>
-      <section data-bs-theme={darkMode}>
+      <section className="w-100" data-bs-theme={darkMode}>
         <h1>React Media Recorder</h1>
         <div>
           <AudioRecorder />

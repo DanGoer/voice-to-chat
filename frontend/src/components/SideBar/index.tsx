@@ -1,8 +1,9 @@
 import "./SideBar.modules.scss";
 import Robot from "../Icons/Robot";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import User from "../Icons/User";
+import { Nav } from "react-bootstrap";
 
 function SideBar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +41,7 @@ function SideBar({ children }) {
     },
   ];
   return (
-    <div className="container">
+    <div className="sidebar-container">
       <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
         <div className="top_section">
           <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
@@ -53,7 +54,8 @@ function SideBar({ children }) {
           </div>
         </div>
         {menuItem.map((item, index) => (
-          <NavLink
+          <Nav.Link
+            as={Link}
             to={item.path}
             key={item.name + index}
             className="link"
@@ -66,10 +68,10 @@ function SideBar({ children }) {
             >
               {item.name}
             </div>
-          </NavLink>
+          </Nav.Link>
         ))}
       </div>
-      <div className="main">{children}</div>
+      {children}
     </div>
   );
 }

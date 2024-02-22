@@ -4,13 +4,12 @@
   text-decoration: none;
 }
 
-.container {
-  display: flex;
+.sidebar-container {
+  display: sticky;
 }
 
 .main {
   width: 100%;
-  padding: 20px;
 }
 
 .sidebar {
