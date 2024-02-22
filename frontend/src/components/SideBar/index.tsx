@@ -4,49 +4,42 @@ import { Link } from "react-router-dom";
 import User from "../Icons/User";
 import { Nav } from "react-bootstrap";
 
-function SideBar({ sideIsOpen, setSideIsOpen }) {
+function SideBar({
+  sideIsOpen,
+  setSideIsOpen,
+  toggleSettings,
+  toggleDarkMode,
+}) {
   const menuItem = [
     {
-      path: "/",
-      name: "Dashboard",
+      path: "/chat",
+      name: "Settings",
       icon: <Robot />,
-    },
-    {
-      path: "/about",
-      name: "About",
-      icon: <Robot />,
-    },
-    {
-      path: "/analytics",
-      name: "Analytics",
-      icon: <Robot />,
+      onClick: toggleSettings,
     },
     {
       path: "/comment",
       name: "Comment",
       icon: <Robot />,
+      onClick: toggleSettings,
     },
     {
       path: "/product",
       name: "Product",
       icon: <Robot />,
+      onClick: toggleSettings,
     },
     {
       path: "/productList",
       name: "Product List",
       icon: <Robot />,
+      onClick: toggleSettings,
     },
   ];
   return (
     <div className="sidebar-container">
       <div style={{ width: sideIsOpen ? "200px" : "50px" }} className="sidebar">
         <div className="top_section">
-          <h1
-            style={{ display: sideIsOpen ? "block" : "none" }}
-            className="logo"
-          >
-            Logo
-          </h1>
           <div
             style={{ marginLeft: sideIsOpen ? "50px" : "0px" }}
             className="bars"
@@ -56,6 +49,28 @@ function SideBar({ sideIsOpen, setSideIsOpen }) {
             </button>
           </div>
         </div>
+        <button onClick={toggleSettings} className="link">
+          <div className="icon">
+            <Robot />
+          </div>
+          <div
+            style={{ display: sideIsOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Settings
+          </div>
+        </button>
+        <button onClick={toggleDarkMode} className="link">
+          <div className="icon">
+            <Robot />
+          </div>
+          <div
+            style={{ display: sideIsOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            ToggleDarkMode
+          </div>
+        </button>
         {menuItem.map((item, index) => (
           <Nav.Link
             as={Link}
@@ -63,8 +78,11 @@ function SideBar({ sideIsOpen, setSideIsOpen }) {
             key={item.name + index}
             className="link"
             activeclassName="active"
+            onClick={item.onClick}
           >
-            <div className="icon">{item.icon}</div>
+            <div className="icon">
+              <Robot />
+            </div>
             <div
               style={{ display: sideIsOpen ? "block" : "none" }}
               className="link_text"
