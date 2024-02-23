@@ -9,17 +9,17 @@ import Alert from "react-bootstrap/Alert";
 import AuthWrapper from "../components/AuthWrapper";
 
 const Register = () => {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [msg, setMsg] = useState("");
-  const [loading, setLoading] = useState(false);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const register = (email, password) =>
+  const register = (email: string, password: string) =>
     supabase.auth.signUp({ email, password });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !passwordRef.current?.value ||

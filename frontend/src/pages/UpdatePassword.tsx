@@ -10,13 +10,13 @@ import AuthWrapper from "../components/AuthWrapper";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!passwordRef.current?.value || !confirmPasswordRef.current?.value) {
       setErrorMsg("Please fill all the fields");

@@ -10,11 +10,11 @@ import AuthWrapper from "../components/AuthWrapper";
 
 const PasswordReset = () => {
   const { passwordReset } = useAuth();
-  const emailRef = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [msg, setMsg] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setLoading(true);

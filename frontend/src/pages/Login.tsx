@@ -9,10 +9,10 @@ import Alert from "react-bootstrap/Alert";
 import AuthWrapper from "../components/AuthWrapper";
 
 const Login = () => {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 

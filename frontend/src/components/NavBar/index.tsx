@@ -24,7 +24,11 @@ function NavBar({ darkMode }) {
             <Nav.Link as={Link} to="/chat">
               Chat
             </Nav.Link>
-            {user ? <Nav.Link href="#link">History</Nav.Link> : null}
+            {user ? (
+              <Nav.Link as={Link} to="/history">
+                History
+              </Nav.Link>
+            ) : null}
             {user ? (
               <>
                 <button onClick={signOut}>logout</button>

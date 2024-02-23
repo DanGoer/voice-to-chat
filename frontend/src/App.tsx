@@ -9,9 +9,23 @@ import UpdatePassword from "./pages/UpdatePassword";
 import NavBar from "./components/NavBar";
 import Chat from "./pages/Chat";
 import { useState } from "react";
+import History from "./pages/History";
+import SideBar from "./components/SideBar";
+import { useSetup } from "./context/SetupProvider";
+import SettingsModal from "./components/SettingsModal";
 
 function App() {
+  const {
+    sideIsOpen,
+    toggleSettings,
+    setSideIsOpen,
+    setSettings,
+    settingsModalShow,
+    setSettingsModalShow,
+  } = useSetup();
+
   const [darkMode, setDarkMode] = useState<boolean>(false);
+
   const toggleDarkMode: () => void = () => {
     setDarkMode(!darkMode);
   };
@@ -27,16 +41,44 @@ function App() {
           <Route element={<AuthRoute />}>
             <Route
               path="/chat"
-              element={<Chat toggleDarkMode={toggleDarkMode} />}
+              element={
+                <>
+                  <SideBar
+                    toggleDarkMode={toggleDarkMode}
+                    sideIsOpen={sideIsOpen}
+                    toggleSettings={toggleSettings}
+                    setSideIsOpen={setSideIsOpen}
+                  />
+                  <Chat />
+                </>
+              }
             />
-            <Route path="/chat2" element={<Home />} />
+            <Route
+              path="/history"
+              element={
+                <>
+                  <SideBar
+                    toggleDarkMode={toggleDarkMode}
+                    sideIsOpen={sideIsOpen}
+                    toggleSettings={toggleSettings}
+                    setSideIsOpen={setSideIsOpen}
+                  />
+                  <History />
+                </>
+              }
+            />
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/passwordreset" element={<PasswordReset />} />
           <Route path="/update-password" element={<UpdatePassword />} />
-        </Routes>
+        </Routes>{" "}
+        <SettingsModal
+          setSettings={setSettings}
+          show={settingsModalShow}
+          onHide={() => setSettingsModalShow(false)}
+        />
       </main>
     </>
   );

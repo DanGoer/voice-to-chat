@@ -1,41 +1,21 @@
 import AudioRecorder from "../components/AudioRecorder";
-import { useState } from "react";
-import SettingsModal from "../components/SettingsModal";
-import SideBar from "../components/SideBar";
 
-function Chat({ toggleDarkMode }) {
-  const [settingsModalShow, setSettingsModalShow] = useState<boolean>(false);
-  const [settings, setSettings] = useState<string>("");
-  const [sideIsOpen, setSideIsOpen] = useState<boolean>(false);
+import { useSetup } from "../context/SetupProvider";
 
-  const toggleSettings = () => {
-    setSettingsModalShow(!settingsModalShow);
-  };
+function Chat() {
+  const { sideIsOpen } = useSetup();
 
   return (
-    <>
-      <SideBar
-        toggleDarkMode={toggleDarkMode}
-        sideIsOpen={sideIsOpen}
-        toggleSettings={toggleSettings}
-        setSideIsOpen={setSideIsOpen}
-      />
-      <section
-        className={`${
-          sideIsOpen ? "side-is-open" : ""
-        } chat-section w-100 vh-75 `}
-      >
-        <h1>YAIM Chat Interface</h1>
-        <div>
-          <AudioRecorder />
-        </div>
-        <SettingsModal
-          setSettings={setSettings}
-          show={settingsModalShow}
-          onHide={() => setSettingsModalShow(false)}
-        />
-      </section>
-    </>
+    <section
+      className={`${
+        sideIsOpen ? "side-is-open" : ""
+      } chat-section w-100 vh-75 `}
+    >
+      <h1>YAIM Chat Interface</h1>
+      <div>
+        <AudioRecorder />
+      </div>
+    </section>
   );
 }
 
