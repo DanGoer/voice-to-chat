@@ -13,6 +13,10 @@ const SetupProvider: React.FC<SetupProviderProps> = ({ children }) => {
   const [settings, setSettings] = useState<string>("");
   const [sideIsOpen, setSideIsOpen] = useState<boolean>(false);
 
+  const toggleSettings: () => void = () => {
+    setSettingsModalShow(!settingsModalShow);
+  };
+
   return (
     <SetupContext.Provider
       value={{
@@ -22,6 +26,7 @@ const SetupProvider: React.FC<SetupProviderProps> = ({ children }) => {
         setSettings,
         settingsModalShow,
         setSettingsModalShow,
+        toggleSettings,
       }}
     >
       {children}

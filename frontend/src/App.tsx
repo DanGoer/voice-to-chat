@@ -15,14 +15,7 @@ import { useSetup } from "./context/SetupProvider";
 import SettingsModal from "./components/SettingsModal";
 
 function App() {
-  const {
-    sideIsOpen,
-    toggleSettings,
-    setSideIsOpen,
-    setSettings,
-    settingsModalShow,
-    setSettingsModalShow,
-  } = useSetup();
+  const { setSettings, settingsModalShow, setSettingsModalShow } = useSetup();
 
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
@@ -37,18 +30,14 @@ function App() {
         data-bs-theme={darkMode ? "dark" : "light"}
         className="pt-5 min-vh-100"
       >
+        <SettingsModal onHide={() => setSettingsModalShow(false)} />
         <Routes>
           <Route element={<AuthRoute />}>
             <Route
               path="/chat"
               element={
                 <>
-                  <SideBar
-                    toggleDarkMode={toggleDarkMode}
-                    sideIsOpen={sideIsOpen}
-                    toggleSettings={toggleSettings}
-                    setSideIsOpen={setSideIsOpen}
-                  />
+                  <SideBar toggleDarkMode={toggleDarkMode} />
                   <Chat />
                 </>
               }
@@ -57,12 +46,7 @@ function App() {
               path="/history"
               element={
                 <>
-                  <SideBar
-                    toggleDarkMode={toggleDarkMode}
-                    sideIsOpen={sideIsOpen}
-                    toggleSettings={toggleSettings}
-                    setSideIsOpen={setSideIsOpen}
-                  />
+                  <SideBar toggleDarkMode={toggleDarkMode} />
                   <History />
                 </>
               }
@@ -73,12 +57,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/passwordreset" element={<PasswordReset />} />
           <Route path="/update-password" element={<UpdatePassword />} />
-        </Routes>{" "}
-        <SettingsModal
-          setSettings={setSettings}
-          show={settingsModalShow}
-          onHide={() => setSettingsModalShow(false)}
-        />
+        </Routes>
       </main>
     </>
   );

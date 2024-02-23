@@ -1,10 +1,13 @@
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { useSetup } from "../../context/SetupProvider";
 
-function SettingsModal({ setSettings, show, onHide }) {
+function SettingsModal({ onHide }) {
+  const { setSettings, settingsModalShow, toggleSettings } = useSetup();
+
   return (
     <Modal
-      show={show}
-      onHide={onHide}
+      show={settingsModalShow}
+      onHide={toggleSettings}
       aria-labelledby="contained-modal-title-vcenter"
     >
       <Modal.Header closeButton>

@@ -1,17 +1,7 @@
-import { useSetup } from "../context/SetupProvider";
+import SideBarWrapper from "../components/SideBarWrapper";
 
 function History() {
-  const { sideIsOpen } = useSetup();
-
-  return (
-    <section
-      className={`${
-        sideIsOpen ? "side-is-open" : ""
-      } chat-section w-100 vh-75 `}
-    >
-      history
-    </section>
-  );
+  return <SideBarWrapper>history</SideBarWrapper>;
 }
 
 export default History;

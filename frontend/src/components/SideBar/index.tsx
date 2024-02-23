@@ -3,13 +3,10 @@ import Robot from "../Icons/Robot";
 import { Link } from "react-router-dom";
 import User from "../Icons/User";
 import { Nav } from "react-bootstrap";
+import { useSetup } from "../../context/SetupProvider";
 
-function SideBar({
-  sideIsOpen,
-  setSideIsOpen,
-  toggleSettings,
-  toggleDarkMode,
-}) {
+function SideBar({ toggleDarkMode }) {
+  const { sideIsOpen, toggleSettings, setSideIsOpen } = useSetup();
   const menuItem = [
     {
       path: "/chat",
