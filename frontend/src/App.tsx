@@ -11,12 +11,9 @@ import Chat from "./pages/Chat";
 import { useState } from "react";
 import History from "./pages/History";
 import SideBar from "./components/SideBar";
-import { useSetup } from "./context/SetupProvider";
 import SettingsModal from "./components/SettingsModal";
 
 function App() {
-  const { setSettings, settingsModalShow, setSettingsModalShow } = useSetup();
-
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   const toggleDarkMode: () => void = () => {
@@ -30,7 +27,7 @@ function App() {
         data-bs-theme={darkMode ? "dark" : "light"}
         className="pt-5 min-vh-100"
       >
-        <SettingsModal onHide={() => setSettingsModalShow(false)} />
+        <SettingsModal darkMode={darkMode} />
         <Routes>
           <Route element={<AuthRoute />}>
             <Route

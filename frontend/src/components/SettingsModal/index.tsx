@@ -1,11 +1,12 @@
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
 
-function SettingsModal({ onHide }) {
+function SettingsModal({ darkMode }) {
   const { setSettings, settingsModalShow, toggleSettings } = useSetup();
 
   return (
     <Modal
+      data-bs-theme={darkMode ? "dark" : "light"}
       show={settingsModalShow}
       onHide={toggleSettings}
       aria-labelledby="contained-modal-title-vcenter"
@@ -40,7 +41,7 @@ function SettingsModal({ onHide }) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button onClick={toggleSettings}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
