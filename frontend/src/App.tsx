@@ -12,6 +12,7 @@ import { useState } from "react";
 import History from "./pages/History";
 import SideBar from "./components/SideBar";
 import SettingsModal from "./components/SettingsModal";
+import Faq from "./pages/Faq";
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -50,6 +51,7 @@ function App() {
             />
           </Route>
           <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/passwordreset" element={<PasswordReset />} />

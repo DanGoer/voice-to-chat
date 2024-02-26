@@ -4,6 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 
+const navLinks = [
+  { name: "Chat", link: "chat" },
+  { name: "FAQ", link: "faq" },
+];
+
 function NavBar({ darkMode }) {
   const { user, signOut } = useAuth();
 
@@ -21,16 +26,18 @@ function NavBar({ darkMode }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/chat">
-              Chat
-            </Nav.Link>
-            {user ? (
-              <Nav.Link as={Link} to="/history">
-                History
-              </Nav.Link>
-            ) : null}
+            {navLinks.map((link) => {
+              return (
+                <Nav.Link key={link.name} as={Link} to={`/${link.link}`}>
+                  {link.name}
+                </Nav.Link>
+              );
+            })}
             {user ? (
               <>
+                <Nav.Link as={Link} to="/history">
+                  History
+                </Nav.Link>
                 <button onClick={signOut}>logout</button>
                 <Navbar.Text>Signed in with: {user.email}</Navbar.Text>
               </>
