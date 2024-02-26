@@ -1,36 +1,32 @@
 import "./SideBar.modules.scss";
 import Robot from "../Icons/Robot";
-import { Link } from "react-router-dom";
 import User from "../Icons/User";
+import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
 
 function SideBar({ toggleDarkMode }) {
   const { sideIsOpen, toggleSettings, setSideIsOpen } = useSetup();
-  const menuItem = [
+  const menuNavItems = [
     {
       path: "/chat",
-      name: "Settings",
+      name: "Chat",
       icon: <Robot />,
-      onClick: toggleSettings,
     },
     {
-      path: "/comment",
-      name: "Comment",
+      path: "/faq",
+      name: "FAQ",
+      icon: <User />,
+    },
+    {
+      path: "/history",
+      name: "History",
       icon: <Robot />,
-      onClick: toggleSettings,
     },
     {
       path: "/product",
       name: "Product",
       icon: <Robot />,
-      onClick: toggleSettings,
-    },
-    {
-      path: "/productList",
-      name: "Product List",
-      icon: <Robot />,
-      onClick: toggleSettings,
     },
   ];
 
@@ -69,18 +65,9 @@ function SideBar({ toggleDarkMode }) {
             ToggleDarkMode
           </div>
         </button>
-        {menuItem.map((item, index) => (
-          <Nav.Link
-            as={Link}
-            to={item.path}
-            key={item.name + index}
-            className="link"
-            activeclassName="active"
-            onClick={item.onClick}
-          >
-            <div className="icon">
-              <Robot />
-            </div>
+        {menuNavItems.map((item) => (
+          <Nav.Link as={Link} to={item.path} key={item.name} className="link">
+            <div className="icon">{item.icon}</div>
             <div
               style={{ display: sideIsOpen ? "block" : "none" }}
               className="link_text"
