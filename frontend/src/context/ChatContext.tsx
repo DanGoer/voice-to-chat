@@ -9,7 +9,14 @@ const ChatContext = createContext(null);
 export const useChat = () => useContext(ChatContext);
 
 const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
-  return <ChatContext.Provider value={{}}>{children}</ChatContext.Provider>;
+  const [text, setText] = useState<string>("");
+  const [history, setHistory] = useState<string>("");
+
+  return (
+    <ChatContext.Provider value={{ text, setText, history, setHistory }}>
+      {children}
+    </ChatContext.Provider>
+  );
 };
 
 export default ChatProvider;

@@ -1,17 +1,21 @@
 import AudioRecorder from "../components/AudioRecorder";
 import ChatInput from "../components/ChatInput";
 import SideBarWrapper from "../components/SideBarWrapper";
-import ChatProvider from "../context/ChatContext";
+import { useChat } from "../context/ChatContext";
 
 function Chat() {
+  const { text } = useChat();
   return (
-    <ChatProvider>
-      <SideBarWrapper>
-        <h1>YAIM Chat Interface</h1>
-        <AudioRecorder />
-        <ChatInput />
-      </SideBarWrapper>
-    </ChatProvider>
+    <SideBarWrapper>
+      <h1>YAIM Chat Interface</h1>
+      <AudioRecorder />
+      <ChatInput />
+      {text ? (
+        <div>
+          <p>Text:{text}</p>
+        </div>
+      ) : null}
+    </SideBarWrapper>
   );
 }
 

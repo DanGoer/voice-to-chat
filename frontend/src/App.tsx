@@ -13,6 +13,7 @@ import History from "./pages/History";
 import SideBar from "./components/SideBar";
 import SettingsModal from "./components/SettingsModal";
 import Faq from "./pages/Faq";
+import ChatProvider from "./context/ChatContext";
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -36,7 +37,9 @@ function App() {
               element={
                 <>
                   <SideBar toggleDarkMode={toggleDarkMode} />
-                  <Chat />
+                  <ChatProvider>
+                    <Chat />
+                  </ChatProvider>
                 </>
               }
             />

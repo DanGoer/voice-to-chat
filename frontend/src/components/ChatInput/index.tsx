@@ -1,3 +1,4 @@
+import { useChat } from "../../context/ChatContext";
 import { useSetup } from "../../context/SetupProvider";
 import useAudioRecorder from "../../hooks/useAudioRecorder";
 import { getSpeechToText } from "../../utils/getSpeechToText";
@@ -11,10 +12,10 @@ function ChatInput() {
     recordingStatus,
     permission,
     audio,
-    text,
-    setText,
     audioChunks,
   } = useAudioRecorder();
+
+  const { setText } = useChat();
 
   return (
     <section
@@ -46,11 +47,6 @@ function ChatInput() {
           <a download href={audio}>
             Download Recording
           </a>
-        </div>
-      ) : null}
-      {text ? (
-        <div>
-          <p>Text:{text}</p>
         </div>
       ) : null}
     </section>
