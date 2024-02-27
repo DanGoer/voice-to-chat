@@ -1,14 +1,39 @@
+import { useRef, useState } from "react";
 import { useChat } from "../../context/ChatContext";
 import { useSetup } from "../../context/SetupProvider";
 import useAudioRecorder from "../../hooks/useAudioRecorder";
 import { getSpeechToText } from "../../utils/getSpeechToText";
+import { getTextToChat } from "../../utils/getTextToChat";
+import { Button, Form } from "react-bootstrap";
 
 function ChatInput() {
-  const { sideIsOpen } = useSetup();
+  const [textError, setTextError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const writeTextRef = useRef<HTMLInputElement>(null);
+  const { sideIsOpen, settings } = useSetup();
   const { startRecording, stopRecording, recordingStatus, audio, audioChunks } =
     useAudioRecorder();
 
   const { permission, getMicrophonePermission, stream, setText } = useChat();
+
+  const handleTextSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      setTextError("");
+      setLoading(true);
+      if (!writeTextRef.current?.value) {
+        setTextError("Please fill in the fields");
+        return;
+      }
+      const data = await getTextToChat(writeTextRef.current.value, settings);
+      console.log("data" + data);
+    } catch (error) {
+      setLoading(false);
+      setTextError("Da ist etwas schief gegangen");
+    }
+    setLoading(false);
+  };
 
   return (
     <section
@@ -16,6 +41,17 @@ function ChatInput() {
         sideIsOpen ? "side-is-open" : ""
       } chat-section w-100 vh-75 `}
     >
+      <Form onSubmit={handleTextSubmit}>
+        <Form.Group>
+          <Form.Label>inputtext:</Form.Label>
+          <Form.Control
+            ref={writeTextRef}
+            type="text"
+            placeholder="ask something"
+          />
+          <Button type="submit">Send text to BE</Button>
+        </Form.Group>
+      </Form>
       {!permission ? (
         <button onClick={getMicrophonePermission} type="button">
           Get Microphone
@@ -32,7 +68,7 @@ function ChatInput() {
         </button>
       ) : null}
       <button onClick={() => getSpeechToText(audioChunks, setText)}>
-        Send to BE
+        Send speech to BE
       </button>
       {audio ? (
         <div className="audio-container">

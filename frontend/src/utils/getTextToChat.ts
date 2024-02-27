@@ -1,7 +1,7 @@
 const getTextToChat = async (text, settings) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_HOST}api/textToSpeech/`,
+      `${import.meta.env.VITE_HOST}api/textToChat/`,
       {
         method: "POST",
         headers: {
