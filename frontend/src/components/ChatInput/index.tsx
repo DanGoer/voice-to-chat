@@ -5,17 +5,10 @@ import { getSpeechToText } from "../../utils/getSpeechToText";
 
 function ChatInput() {
   const { sideIsOpen } = useSetup();
-  const {
-    getMicrophonePermission,
-    startRecording,
-    stopRecording,
-    recordingStatus,
-    permission,
-    audio,
-    audioChunks,
-  } = useAudioRecorder();
+  const { startRecording, stopRecording, recordingStatus, audio, audioChunks } =
+    useAudioRecorder();
 
-  const { setText } = useChat();
+  const { permission, getMicrophonePermission, stream, setText } = useChat();
 
   return (
     <section
@@ -29,7 +22,7 @@ function ChatInput() {
         </button>
       ) : null}
       {permission && recordingStatus === "inactive" ? (
-        <button onClick={startRecording} type="button">
+        <button onClick={() => startRecording(stream)} type="button">
           Start Recording
         </button>
       ) : null}

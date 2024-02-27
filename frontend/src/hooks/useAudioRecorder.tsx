@@ -8,34 +8,14 @@ enum RecordingStatus {
 }
 
 function useAudioRecorder() {
-  const [permission, setPermission] = useState<boolean>(false);
-  const [stream, setStream] = useState<null | MediaStream>(null);
   const mediaRecorder = useRef(null);
   const [recordingStatus, setRecordingStatus] = useState<RecordingStatus>(
     RecordingStatus.inactive
   );
   const [audioChunks, setAudioChunks] = useState<any[]>([]);
   const [audio, setAudio] = useState<null | string>(null);
-  const [text, setText] = useState<string>("");
 
-  const getMicrophonePermission = async () => {
-    if ("MediaRecorder" in window) {
-      try {
-        const streamData: any = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: false,
-        });
-        setPermission(true);
-        setStream(streamData);
-      } catch (err) {
-        alert(err.message);
-      }
-    } else {
-      alert("The MediaRecorder API is not supported in your browser.");
-    }
-  };
-
-  const startRecording = async () => {
+  const startRecording = async (stream) => {
     setRecordingStatus(RecordingStatus.recording);
     //create new Media recorder instance using the stream
 
@@ -68,14 +48,10 @@ function useAudioRecorder() {
   };
 
   return {
-    getMicrophonePermission,
     startRecording,
     stopRecording,
     recordingStatus,
-    permission,
     audio,
-    text,
-    setText,
     audioChunks,
   };
 }

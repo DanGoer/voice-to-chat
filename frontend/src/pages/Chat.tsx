@@ -1,4 +1,3 @@
-import AudioRecorder from "../components/AudioRecorder";
 import ChatInput from "../components/ChatInput";
 import SideBarWrapper from "../components/SideBarWrapper";
 import { useChat } from "../context/ChatContext";
@@ -8,7 +7,6 @@ function Chat() {
   return (
     <SideBarWrapper>
       <h1>YAIM Chat Interface</h1>
-      <AudioRecorder />
       <ChatInput />
       {text ? (
         <div>
