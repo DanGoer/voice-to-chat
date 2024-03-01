@@ -7,13 +7,13 @@ import { getTextToChat } from "../../utils/getTextToChat";
 import { Button, Form } from "react-bootstrap";
 
 function ChatInput() {
-  const [textError, setTextError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [textError, setTextError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const writeTextRef = useRef<HTMLInputElement>(null);
+
   const { sideIsOpen, settings } = useSetup();
   const { startRecording, stopRecording, recordingStatus, audio, audioChunks } =
     useAudioRecorder();
-
   const { permission, getMicrophonePermission, stream, setText } = useChat();
 
   const handleTextSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
