@@ -1,9 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 import { User } from "@supabase/supabase-js";
-interface AuthProviderProps {
-  children: React.ReactElement;
-}
+import { ProviderProps } from "../types/interfaces";
 
 const AuthContext = createContext(null);
 
@@ -22,7 +20,7 @@ const passwordReset = (email: string) =>
 const updatePassword = (updatedPassword: string) =>
   supabase.auth.updateUser({ password: updatedPassword });
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
   const [auth, setAuth] = useState<boolean>(false);
   const [user, setUser] = useState<User>(null);
 

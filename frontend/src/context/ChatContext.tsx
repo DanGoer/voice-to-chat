@@ -1,14 +1,11 @@
 import { createContext, useContext, useState } from "react";
-
-interface ChatProviderProps {
-  children: React.ReactElement;
-}
+import { ProviderProps } from "../types/interfaces";
 
 const ChatContext = createContext(null);
 
 export const useChat = () => useContext(ChatContext);
 
-const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
+const ChatProvider: React.FC<ProviderProps> = ({ children }) => {
   const [stream, setStream] = useState<null | MediaStream>(null);
   const [permission, setPermission] = useState<boolean>(false);
 

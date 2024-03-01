@@ -1,5 +1,6 @@
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
+import { allThemes } from "../../data/data";
 
 function SettingsModal({ darkMode }) {
   const { setSettings, settingsModalShow, toggleSettings } = useSetup();
@@ -12,21 +13,19 @@ function SettingsModal({ darkMode }) {
       aria-labelledby="contained-modal-title-vcenter"
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Using Grid in Modal
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Settings</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="grid-example">
+      <Modal.Body>
         <Container>
           <Row>
-            <Col xs={12} md={8}>
-              .col-xs-12 .col-md-8
-            </Col>
+            {allThemes.map((theme) => (
+              <div>{theme}</div>
+            ))}
+            <Col xs={12} md={8}></Col>
             <Col xs={6} md={4}>
               .col-xs-6 .col-md-4
             </Col>
           </Row>
-
           <Row>
             <Col xs={6} md={4}>
               .col-xs-6 .col-md-4
@@ -40,9 +39,7 @@ function SettingsModal({ darkMode }) {
           </Row>
         </Container>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={toggleSettings}>Close</Button>
-      </Modal.Footer>
+      <Modal.Footer>Close or click outside to save</Modal.Footer>
     </Modal>
   );
 }
