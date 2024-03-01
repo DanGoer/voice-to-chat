@@ -1,4 +1,4 @@
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
 import { allDetails, allGenders, allMoods, allThemes } from "../../data/data";
 import { useState } from "react";
@@ -10,7 +10,10 @@ function SettingsModal({ darkMode }) {
   const [mood, setMood] = useState(settings.mood);
   const [detail, setDetail] = useState(settings.detail);
   const [gender, setGender] = useState(settings.gender);
-  console.log("theme" + theme);
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
+
+  console.log("min" + min);
   console.log("settingstheme" + settings.theme);
 
   const onClose = () => {
@@ -19,7 +22,7 @@ function SettingsModal({ darkMode }) {
       mood: mood,
       detail: detail,
       gender: gender,
-      limitation: { min: 50, max: 200 },
+      limitation: { min: parseInt(min), max: parseInt(max) },
     });
     toggleSettings();
   };
@@ -88,6 +91,22 @@ function SettingsModal({ darkMode }) {
             ))}
             <Col xs={6} md={4}>
               .col-xs-6 .col-md-4
+            </Col>
+            <Col xs={6} md={4}>
+              <Form.Label>Wordlimitation from min {min}</Form.Label>
+              <Form.Range
+                value={min}
+                min="25"
+                max="100"
+                onChange={(e) => setMin(e.target.value)}
+              />
+              <Form.Label>Wordlimitation to max {max}</Form.Label>
+              <Form.Range
+                value={max}
+                min="100"
+                max="500"
+                onChange={(e) => setMax(e.target.value)}
+              />
             </Col>
             <Col xs={6} md={4}>
               .col-xs-6 .col-md-4
