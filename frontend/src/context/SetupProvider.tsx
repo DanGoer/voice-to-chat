@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { Detail, Gender, Mood, Theme } from "../types/enums";
-import { ProviderProps } from "../types/interfaces";
+import { Detail, Gender, Mood, Theme } from "../../../types/enums";
+import { ProviderProps } from "../../../types/interfaces";
 
 interface SettingsProps {
   theme: Theme;
@@ -25,7 +25,6 @@ const SetupProvider: React.FC<ProviderProps> = ({ children }) => {
     limitation: { min: 50, max: 200 },
   });
 
-  console.log("settings:" + JSON.stringify(settings));
   const toggleSettings: () => void = () => {
     setSettingsModalShow(!settingsModalShow);
   };

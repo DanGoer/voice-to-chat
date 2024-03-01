@@ -1,4 +1,4 @@
-import { Detail, Gender, Mood, Theme } from "../types/enums";
+import { Detail, Gender, Mood, Theme } from "../../../types/enums";
 
 export const allThemes = Object.values(Theme);
 export const allMoods = Object.values(Mood);

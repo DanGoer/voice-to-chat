@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { ProviderProps } from "../types/interfaces";
+import { ProviderProps } from "../../../types/interfaces";
 
 const ChatContext = createContext(null);
 

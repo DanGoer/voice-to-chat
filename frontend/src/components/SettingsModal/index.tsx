@@ -13,9 +13,6 @@ function SettingsModal({ darkMode }) {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-  console.log("min" + min);
-  console.log("settingstheme" + settings.theme);
-
   const onClose = () => {
     setSettings({
       theme: theme,
