@@ -25,6 +25,7 @@ const SetupProvider: React.FC<ProviderProps> = ({ children }) => {
     limitation: { min: 50, max: 200 },
   });
 
+  console.log("settings:" + JSON.stringify(settings));
   const toggleSettings: () => void = () => {
     setSettingsModalShow(!settingsModalShow);
   };
