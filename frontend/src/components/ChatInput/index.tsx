@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useChat } from "../../context/ChatContext";
 import { useSetup } from "../../context/SetupProvider";
 import useAudioRecorder from "../../hooks/useAudioRecorder";
 import { getSpeechToText } from "../../utils/getSpeechToText";
 import { getTextToChat } from "../../utils/getTextToChat";
-import { Button, Form } from "react-bootstrap";
 
 function ChatInput() {
   const [textError, setTextError] = useState<string>("");

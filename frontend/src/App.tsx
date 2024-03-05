@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import ChatProvider from "./context/ChatContext";
 import "./App.scss";
-import Home from "./pages/Home";
 import AuthRoute from "./components/AuthRoute";
+import Home from "./pages/Home";
+import Chat from "./pages/Chat";
+import History from "./pages/History";
+import Faq from "./pages/Faq";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PasswordReset from "./pages/PasswordReset";
 import UpdatePassword from "./pages/UpdatePassword";
 import NavBar from "./components/NavBar";
-import Chat from "./pages/Chat";
-import { useState } from "react";
-import History from "./pages/History";
 import SideBar from "./components/SideBar";
 import SettingsModal from "./components/SettingsModal";
-import Faq from "./pages/Faq";
-import ChatProvider from "./context/ChatContext";
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);

@@ -1,6 +1,6 @@
+import { useChat } from "../context/ChatContext";
 import ChatInput from "../components/ChatInput";
 import SideBarWrapper from "../components/SideBarWrapper";
-import { useChat } from "../context/ChatContext";
 
 function Chat() {
   const { text } = useChat();

@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
-import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
-
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { useAuth } from "../context/AuthProvider";
 import AuthWrapper from "../components/AuthWrapper";
 
 const PasswordReset = () => {

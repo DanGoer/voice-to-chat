@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../supabase/client";
-
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { supabase } from "../supabase/client";
 import AuthWrapper from "../components/AuthWrapper";
 
 const Register = () => {

@@ -1,9 +1,9 @@
-import "./SideBar.modules.scss";
-import Robot from "../Icons/Robot";
-import User from "../Icons/User";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
+import "./SideBar.modules.scss";
+import Robot from "../Icons/Robot";
+import User from "../Icons/User";
 
 function SideBar({ toggleDarkMode }) {
   const { sideIsOpen, toggleSettings, setSideIsOpen } = useSetup();

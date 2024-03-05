@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
 import { allDetails, allGenders, allMoods, allThemes } from "../../data/data";
-import { useState } from "react";
 
 function SettingsModal({ darkMode }) {
   const { settings, setSettings, settingsModalShow, toggleSettings } =
