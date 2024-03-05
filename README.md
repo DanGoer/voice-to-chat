@@ -109,20 +109,33 @@ This is an example of how to list things you need to use the software and how to
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Get a free API Key from supabase at [https://supabase.com/](https://supabase.com/)
-2. Clone the repo
+2. Get a free API Key from openai at [https://openai.com/](https://openai.com/)
+3. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-3. Install NPM packages
+4. Install NPM packages
    ```sh
    npm run install-all
    ```
-4. Enter your API in `config.js`
+5. Enter your supabase API Key and URL and adjust your server address in `frontend/.env`
    ```js
-   const API_KEY = "ENTER YOUR API";
+   VITE_HOST=http://localhost:8080/
+   VITE_SUPABASE_PROJECT_URL=Your Supabase URL
+   VITE_SUPABASE_PROJECT_KEY=Your API Key
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+6. Enter your openai API Key and set CORS, Public Path and Port in `server/.env`
+   ```js
+   API_KEY = "Your API Key";
+   PUBLIC_PATH = "/";
+   CORS_ORIGIN = "http://localhost:5173/";
+   PORT = "8080";
+   ```
+7. start App
+   ```sh
+   npm run dev
+   ```
+   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 
@@ -150,23 +163,6 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- LICENSE -->
 
 ## License
@@ -179,7 +175,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@your_twitter](https://twitter.com/your_username) - devgoergens@gmail.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
