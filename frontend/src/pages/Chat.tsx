@@ -1,3 +1,4 @@
+//chat and chatinput page
 import { useChat } from "../context/ChatContext";
 import ChatInput from "../components/ChatInput";
 import SideBarWrapper from "../components/SideBarWrapper";

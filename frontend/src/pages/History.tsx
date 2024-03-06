@@ -1,3 +1,4 @@
+//history page
 import SideBarWrapper from "../components/SideBarWrapper";
 
 function History() {

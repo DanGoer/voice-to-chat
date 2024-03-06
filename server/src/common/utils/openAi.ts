@@ -1,3 +1,4 @@
+//openai client
 import OpenAI from "openai";
 import { getAPIKey } from "./envConfig";
 

@@ -1,3 +1,4 @@
+//custom hook for handling audiorecorder
 import { useRef, useState } from "react";
 
 const mimeType: string = "audio/webm";

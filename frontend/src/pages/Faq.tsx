@@ -1,3 +1,4 @@
+//Faq page
 import Accordion from "react-bootstrap/Accordion";
 import Footer from "../components/Footer";
 

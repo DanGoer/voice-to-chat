@@ -1,3 +1,4 @@
+//landing page
 import Footer from "../components/Footer";
 import HeroImage from "../components/HeroImage";
 import InfoBox from "../components/InfoBox";

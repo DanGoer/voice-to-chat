@@ -1,3 +1,4 @@
+//envconfig util
 export const getPort = () => getEnvVar<number>("PORT", "number");
 export const getNodeEnv = () => getEnvVar<string>("NODE_ENV", "string");
 export const getCorsOrigin = () => getEnvVar<string>("CORS_ORIGIN", "string");
