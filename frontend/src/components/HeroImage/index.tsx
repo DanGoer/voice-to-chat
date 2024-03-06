@@ -1,3 +1,4 @@
+//hero image for landing page
 import heroImage from "../../images/hero.jpg";
 import "./HeroImage.modules.scss";
 

@@ -1,3 +1,4 @@
+//handles inputs etc and ui for chat
 import { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useChat } from "../../context/ChatContext";

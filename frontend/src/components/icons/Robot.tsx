@@ -1,3 +1,4 @@
+//robot svg icon
 function Robot() {
   return (
     <div className="">

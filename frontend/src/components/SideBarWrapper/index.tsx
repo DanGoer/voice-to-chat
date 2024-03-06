@@ -1,3 +1,4 @@
+//sidebarwrapper for smooth transitions in pages which uses sidebar
 import { useSetup } from "../../context/SetupProvider";
 
 function SideBarWrapper({ children }) {

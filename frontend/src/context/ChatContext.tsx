@@ -1,3 +1,4 @@
+//context for handling audiorecorder and chat
 import { createContext, useContext, useState } from "react";
 import { ProviderProps } from "../../../types/interfaces";
 

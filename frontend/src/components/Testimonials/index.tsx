@@ -1,3 +1,4 @@
+//testimonials for landingpage
 const testimonialsData = [
   {
     id: 1,

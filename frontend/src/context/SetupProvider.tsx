@@ -1,3 +1,4 @@
+//context for handling settings and setup
 import { createContext, useContext, useState } from "react";
 import { Detail, Gender, Mood, Theme } from "../../../types/enums";
 import { ProviderProps } from "../../../types/interfaces";

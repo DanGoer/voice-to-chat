@@ -1,3 +1,4 @@
+//human svg icon
 function User() {
   return (
     <div className="flex justify-start w-full p-2">

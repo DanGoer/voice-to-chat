@@ -1,3 +1,4 @@
+//settingsmodal for app settings
 import { useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";

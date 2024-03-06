@@ -1,3 +1,4 @@
+//sidebar for logged in users
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useSetup } from "../../context/SetupProvider";
